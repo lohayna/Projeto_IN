@@ -93,7 +93,6 @@ plt.gca().invert_yaxis()
 plt.grid() 
 
 plt.subplot(1,5,4)
-
 plt.plot([0, 0], [min(depth), max(depth)], color='black')
 
 for depthi, Ri in zip(depth[1:], Refletivitidade):
