@@ -30,41 +30,47 @@ def klauder(t, f, f1, T):
 
     return klauder
 
-t = np.linspace(-1,1,1000)
+nt = 1000
+t = np.linspace(-1,1,nt)
+dt = t[1]-t[0]
 T = 0.5
-f = 25
+f = 50
 f1, f2, f3 = 20, 10, 5
-ricker_breath = 0.7797/f
 
-wav  = ricker(f, t)
-wav_br = ricker(ricker_breath, t)
+#wav  = ricker(f, t)
+#wav = sinc(t)
+F_wav = np.fft.rfft(wav)
+freq = np.fft.rfftfreq(nt, dt)
 wav_ormsby = ormsby(t, f, f1, f2, f3)
 wav_klauder = klauder(t, f, f1, T)
 
 plt.figure(figsize=(8,10))
 
-plt.subplot(4,1,1)
+plt.subplot(3,1,1)
 plt.plot(t, wav)
 plt.xlabel("Time (s)")
 plt.ylabel("Amplitude")
 plt.title("Ricker")
 plt.grid()
 
-plt.subplot(4,1,2)
-plt.plot(t, wav_br)
-plt.xlabel("Time (s)")
-plt.ylabel("Amplitude")
-plt.title("Band-limited Ricker")
+plt.subplot(3,2,1)
+wav  = ricker(f, t)
+F_wav = np.fft.rfft(wav)
+freq = np.fft.rfftfreq(nt, dt)
+plt.figure()
+plt.plot(freq, np.abs(F_wav*F_wav))
+plt.title("Ricker")
 plt.grid()
+plt.show()
 
-plt.subplot(4,1,3)
+plt.subplot(3,1,2)
 plt.plot(t, wav_ormsby)
 plt.xlabel("Time (s)")
 plt.ylabel("Amplitude")
 plt.title("Ormsby")
 plt.grid()
 
-plt.subplot(4,1,4)
+plt.subplot(3,1,3)
 plt.plot(t, wav_klauder)
 plt.xlabel("Time (s)")
 plt.ylabel("Amplitude")
