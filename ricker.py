@@ -39,6 +39,15 @@ f1_k, f2_k = 5, 40
 wav  = ricker(f_r, t)
 F_wav = np.fft.fft(wav)
 freq = np.fft.fftfreq(nt, dt)
+fresh = np.fft.fftshift(freq)
+
+plt.plot(fresh)
+plt.xlabel("Tempo")
+plt.ylabel("Amplitude")
+plt.title("Ricker")
+plt.grid()
+
+plt.show()
 
 wav_ormsby = ormsby(t, f1, f2, f3, f4)
 F_wav_ormsby = np.fft.fft(wav_ormsby)
