@@ -41,7 +41,7 @@ def wavelet_generation(nt, dt, fmax):
     arg = np.pi*((np.arange(nt)*dt - t0)*fc*np.pi)**2
     return (1.0 - 2.0*arg)*np.exp(-arg)
 
-time_samples = 1001
+time_samples = 10001
 time_spacing = 1e-3
 
 total_receivers = 61

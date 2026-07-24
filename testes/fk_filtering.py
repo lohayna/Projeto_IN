@@ -37,8 +37,8 @@ data_fk = np.fft.fftshift(np.fft.fftn(data))#fftn pra qualquer dimensao
 frequency = np.fft.fftshift(np.fft.fftfreq(nt, dt))
 wavenumber = np.fft.fftshift(np.fft.fftfreq(nr, dr))
 
-df = np.abs(np.abs(frequency[1]) - np.abs(frequency[0]))
-dk = np.abs(np.abs(wavenumber[1]) - np.abs(wavenumber[0]))
+df = np.abs(np.abs(frequency[1]) - np.abs(frequency[0])) #resolução da freq
+dk = np.abs(np.abs(wavenumber[1]) - np.abs(wavenumber[0])) #resolução do num de ondas
 
 slope = wavenumber * (max_frequency / np.max(wavenumber)) * np.tan(np.radians(angle))
 
